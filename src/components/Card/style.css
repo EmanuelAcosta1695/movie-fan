@@ -1,0 +1,40 @@
+/* Estilos para la card */
+.card {
+    background-color: #302a2a;
+    border: 1px solid #E8B620;
+    border-radius: 10px;
+    padding: 25px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 70%;
+}
+
+
+.card:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Reducir la intensidad de la sombra */
+    transform: scale(1.04); /* Disminuir la escala en el hover */
+}
+
+.card img {
+    width: 235px;
+    height: 235px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.card-content {
+    flex: 2;
+}
+
+.card h2 {
+    margin-top: 15px;
+    font-size: 20px;
+    color: white;
+}
+
+.card p {
+    margin: 5px 0;
+}

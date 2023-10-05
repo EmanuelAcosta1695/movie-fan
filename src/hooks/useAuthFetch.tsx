@@ -29,6 +29,7 @@ export function useAuthFetch () {
             })
 
             if(redirectRoute) router.push(redirectRoute)
+
         } catch (error: any) {
             showNotification({
                 msj: error.response.data.message as string,
