@@ -4,7 +4,6 @@
     import { NextRequest, NextResponse } from "next/server";
     import bcrypt from "bcryptjs";
     import jwt from "jsonwebtoken";
-    // import { useUser } from '@/context/UserContext';
 
     export async function POST(request: NextRequest) {
 
@@ -78,16 +77,6 @@
             maxAge: 86400,
             path: "/"
         }) // solo se activa en produccion
-
-
-
-        // // Obtiene la función de inicio de sesión desde el contexto
-        // //@ts-ignore
-        // const { login } = useUser();
-
-        // // Cuando el usuario inicia sesión con éxito
-        // login(rest); // Pasa los datos del usuario al contexto
-
 
 
         response.cookies.set('user_data', JSON.stringify(rest), {

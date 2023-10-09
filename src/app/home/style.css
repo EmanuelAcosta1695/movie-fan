@@ -3,7 +3,7 @@ body {
     display: flex;
     justify-content: center;
     /* background-color: rgb(249, 249, 249); */
-    background: linear-gradient(to bottom right, rgb(255, 183, 48), rgb(255, 196, 88));
+    /* background: linear-gradient(to bottom right, rgb(255, 183, 48), rgb(255, 196, 88)); */
 }
 
 /* h1 {

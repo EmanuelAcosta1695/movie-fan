@@ -1,3 +1,4 @@
+import "./style.css";
 import { dateTransform } from '@/utils/dateTransform'
 import jwt from 'jsonwebtoken';
 import {headers, cookies} from "next/headers"
@@ -6,11 +7,9 @@ import { messages } from "@/utils/message"
 import { connectMongoDB } from "@/lib/mongodb";
 import { User } from "@/models/User";
 import { useRouter } from 'next/navigation';
-
 import Card from '@/components/Card/index'
-import "./style.css";
+import SearchBar from '@/components/SearchBar';
 
-// import { useUser } from '@/context/UserContext';
 
   //p.edro@mail.com
   //123
@@ -50,19 +49,18 @@ import "./style.css";
 
   export default async function HomePage () {
 
+
+    const handleSearch = (query: string) => {
+      // Aquí puedes realizar la solicitud a la API utilizando la query
+      // Puedes usar fetch u otra biblioteca para hacer la solicitud.
+      // Por ejemplo, fetch('URL_DE_LA_API', { method: 'GET', ... })
+  
+      // Imprime la query en la consola como ejemplo:
+      console.log('Búsqueda:', query);
+    };
+
+
     const cookieStore = cookies()
-
-    // // Obtén el contexto del usuario
-    // //@ts-ignore
-    // const { user } = useUser();
-
-    // if (user) {
-    //   // Imprime el valor del usuario en la consola
-    //   console.log('Valor del usuario:', user);
-    // } else {
-    //   console.log('no user context');
-    // }
-
     
 
     if (cookieStore) {
@@ -91,6 +89,8 @@ import "./style.css";
     return (
       <main>
         <div>Hola</div>
+
+        <SearchBar onSearch={handleSearch} /> 
 
         {/* <LikeButton id={post.id}/> film, photo */}
         <div className='container'>
