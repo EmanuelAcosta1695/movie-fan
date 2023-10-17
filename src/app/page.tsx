@@ -14,6 +14,7 @@ export default function LoginPage() {
   const login = async (formData: any) => {
     startLoading()
 
+    // Procesa la solicitud de log in del user
     await authFetch({
       endpoint: 'login',
       redirectRoute: '/home',

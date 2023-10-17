@@ -10,13 +10,24 @@ export default function Card({ film, photo } : Props) {
     const cardStyle = {
         cursor: 'pointer',
       };
+
+
+    const MAX_TITLE_LENGTH = 20; // Define la longitud máxima del título
+
+    // Función para truncar el título si es demasiado largo
+    const truncateTitle = (title: String) => {
+    if (title.length > MAX_TITLE_LENGTH) {
+        return title.substring(0, MAX_TITLE_LENGTH) + '...';
+    }
+    return title;
+    };
     
     // ver foto peli: https://image.tmdb.org/t/p/w200/51tqzRtKMMZEYUpSYkrUE7v9ehm.jpg   // poster_path
     return (
         <div className="card">
             <img src={`https://image.tmdb.org/t/p/w200${photo}`} alt="Actor 1"/>
             <div className="card-content">
-                <h2 style={cardStyle}>{film}</h2>
+                <h2 style={cardStyle}>{truncateTitle(film)}</h2>
             </div>
         </div>
     )
