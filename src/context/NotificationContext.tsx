@@ -24,6 +24,7 @@ const defaultState: IState = {
   msj: null
 }
 
+
 // creamos nuestro contexto
 export const NotificationContext = createContext<INotification>(
   {} as INotification

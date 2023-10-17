@@ -49,17 +49,6 @@ import SearchBar from '@/components/SearchBar';
 
   export default async function HomePage () {
 
-
-    const handleSearch = (query: string) => {
-      // Aquí puedes realizar la solicitud a la API utilizando la query
-      // Puedes usar fetch u otra biblioteca para hacer la solicitud.
-      // Por ejemplo, fetch('URL_DE_LA_API', { method: 'GET', ... })
-  
-      // Imprime la query en la consola como ejemplo:
-      console.log('Búsqueda:', query);
-    };
-
-
     const cookieStore = cookies()
     
 
@@ -81,23 +70,25 @@ import SearchBar from '@/components/SearchBar';
       console.log('El usuario no ha iniciado sesión');
     }
 
+    let query = '';
+
+
     // const { users } = await getData()
     const { movies } = await getAllMovies();
-    console.log(movies)
+    // console.log(movies)
 
     // ver foto peli: https://image.tmdb.org/t/p/w200/51tqzRtKMMZEYUpSYkrUE7v9ehm.jpg   // poster_path
     return (
       <main>
-        <div>Hola</div>
-
-        <SearchBar onSearch={handleSearch} /> 
+        <SearchBar query={query} />
 
         {/* <LikeButton id={post.id}/> film, photo */}
+
         <div className='container'>
           {movies?.map((movie: any, index: number) => (
               <Card film={movie.title} photo={movie.poster_path} key={movie.id} />
             ))
-          };
+          }
         </div>
 
         {/* <table className='text-left border m-[1rem] text-sm font-light'>
