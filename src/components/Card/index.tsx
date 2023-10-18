@@ -1,4 +1,6 @@
+'use client'
 import "./style.css";
+import React, { useState } from 'react';
 
 interface Props {
     film: string
@@ -6,6 +8,8 @@ interface Props {
   }
 
 export default function Card({ film, photo } : Props) {
+
+    const [isFavorited, setIsFavorited] = useState(false);
 
     const cardStyle = {
         cursor: 'pointer',
@@ -21,10 +25,20 @@ export default function Card({ film, photo } : Props) {
     }
     return title;
     };
+
+    const toggleFavorite = () => {
+        setIsFavorited(!isFavorited);
+      };
     
     // ver foto peli: https://image.tmdb.org/t/p/w200/51tqzRtKMMZEYUpSYkrUE7v9ehm.jpg   // poster_path
     return (
         <div className="card">
+            <button
+                className={`favorite-button ${isFavorited ? 'favorited' : ''}`}
+                onClick={toggleFavorite}
+                >
+                &#9734; {/* Estrella Unicode */}
+            </button>
             <img src={`https://image.tmdb.org/t/p/w200${photo}`} alt="Actor 1"/>
             <div className="card-content">
                 <h2 style={cardStyle}>{truncateTitle(film)}</h2>

@@ -83,6 +83,7 @@ import SearchBar from '@/components/SearchBar';
         <SearchBar query={query} />
 
         {/* <LikeButton id={post.id}/> film, photo */}
+        <h1>Ultimos lanzamientos:</h1>
 
         <div className='container'>
           {movies?.map((movie: any, index: number) => (

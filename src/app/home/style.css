@@ -43,7 +43,7 @@ body {
   /* Estilos para el contenedor */
   .container {
     /* Puedes eliminar el margen superior si no lo necesitas. */
-    margin-top: 3%;
+    margin-top: 1%;
     display: grid;
     grid-template-columns: repeat(5, 1fr); /* Esto crea 5 columnas iguales. */
     align-items: center;

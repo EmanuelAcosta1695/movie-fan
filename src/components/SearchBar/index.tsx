@@ -68,29 +68,19 @@ export const SearchBar = ({ query }: OnSearchProps) => {
       <button className="SearchButton" onClick={() => handleSearch(search)}>
         Buscar
       </button>
+      
       <div className="ResultsContainer">
-        
-
-
         {results && results.length > 0 && (
-        <div> 
+        <div className='cardContainer'> 
+          <button className="removeSearch" onClick={() => setResults([])}>X</button>
           <h3>Tu búsqueda:</h3>
           {results?.map((movie: any, index: number) => (
             <Card film={movie.title} photo={movie.poster_path} key={movie.id} />
           ))}
-
-          <button className="SearchButton" onClick={() => setResults([])}>X</button>
         </div>
         )}
-
-        {/* <div className='container'>
-          {movies?.map((movie: any, index: number) => (
-              <Card film={movie.title} photo={movie.poster_path} key={movie.id} />
-            ))
-          };
-        </div> */}
-        
       </div>
+      
     </div>
   );
 };

@@ -7,6 +7,7 @@
   width: 600px;
   margin: 0 auto;
   margin-top: 20px;
+  margin-bottom: 30px;
 }
 
 .SearchLabel {
@@ -32,12 +33,24 @@
   cursor: pointer;
 }
 
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+
 .ResultsContainer {
   text-align: left;
   margin-top: 20px;
 }
 
-ul {
-  list-style: none;
-  padding: 0;
+.removeSearch {
+  position: relative;
+  left: 150%; /* Ajusta la posición a la izquierda según sea necesario */
+  padding: 5px 10px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
 }
