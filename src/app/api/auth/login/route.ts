@@ -1,9 +1,9 @@
-    import { connectMongoDB } from "@/lib/mongodb";
-    import { IUser, User } from "@/models/User";
-    import { messages } from "@/utils/message";
-    import { NextRequest, NextResponse } from "next/server";
-    import bcrypt from "bcryptjs";
-    import jwt from "jsonwebtoken";
+import { connectMongoDB } from "@/lib/mongodb";
+import { IUser, User } from "@/models/User";
+import { messages } from "@/utils/message";
+import { NextRequest, NextResponse } from "next/server";
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 
     export async function POST(request: NextRequest) {
 

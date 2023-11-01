@@ -2,7 +2,7 @@ import { connectMongoDB } from "@/lib/mongodb";
 import { isValidEmail } from "@/utils/isValidEmail";
 import { messages } from "@/utils/message";
 import { NextRequest, NextResponse } from "next/server";
-import { IUser, IUserSchema, User } from "@/models/User";
+import { IUserSchema, User } from "@/models/User";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
@@ -11,10 +11,6 @@ export async function POST(request: NextRequest) {
 
     try {
         await connectMongoDB();
-
-        // return NextResponse.json({
-        //     message: 'Base de datos conectada.'
-        // })
 
         const body = await request.json()
 
