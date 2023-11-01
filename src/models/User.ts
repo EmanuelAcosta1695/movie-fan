@@ -1,5 +1,6 @@
 import mongoose, {Schema, Document, ObjectId} from 'mongoose';
 
+// log in
 export interface IUser {
     _id?: ObjectId | string | undefined
     email: string
@@ -8,6 +9,9 @@ export interface IUser {
     updatedAt?: string
 }
 
+// register
+// Document: implica que esa clase está modelando un documento en una base de datos NoSQL 
+//   como MongoDB utilizando una biblioteca como Mongoose en Node.js
 export interface IUserSchema extends Document {
     _id?: ObjectId | string | undefined
     email: string

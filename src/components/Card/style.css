@@ -41,3 +41,31 @@
 .card p {
     margin: 5px 0;
 }
+
+.cardContainer {
+    margin: 0;
+    width: 60%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3%;
+    grid-template-columns: repeat(5, 1fr); /* Esto crea 5 columnas iguales. */
+    align-items: center;
+  }
+
+.SearchButton {
+    justify-content: end;
+}
+
+
+.favorite-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: gray;
+    outline: none;
+  }
+  
+  .favorite-button.favorited {
+    color: yellow;
+  }

@@ -5,9 +5,10 @@ import Card from '../Card';
 
 interface OnSearchProps {
   query: string
+  userId: string
 }
 
-export const SearchBar = ({ query }: OnSearchProps) => {
+export const SearchBar = ({ query, userId }: OnSearchProps) => {
 
   //resultado de la busqueda
   const [results, setResults] = useState([]);
@@ -68,29 +69,19 @@ export const SearchBar = ({ query }: OnSearchProps) => {
       <button className="SearchButton" onClick={() => handleSearch(search)}>
         Buscar
       </button>
+      
       <div className="ResultsContainer">
-        
-
-
         {results && results.length > 0 && (
-        <div> 
+        <div className='cardContainer'> 
+          <button className="removeSearch" onClick={() => setResults([])}>X</button>
           <h3>Tu búsqueda:</h3>
           {results?.map((movie: any, index: number) => (
-            <Card film={movie.title} photo={movie.poster_path} key={movie.id} />
+            <Card title={movie.title} poster_path={movie.poster_path} release_date={movie.release_date} idUser={userId} key={movie.id} />
           ))}
-
-          <button className="SearchButton" onClick={() => setResults([])}>X</button>
         </div>
         )}
-
-        {/* <div className='container'>
-          {movies?.map((movie: any, index: number) => (
-              <Card film={movie.title} photo={movie.poster_path} key={movie.id} />
-            ))
-          };
-        </div> */}
-        
       </div>
+      
     </div>
   );
 };

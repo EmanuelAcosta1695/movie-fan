@@ -1,4 +1,5 @@
 import { connectMongoDB } from "@/lib/mongodb";
+import { Movie } from "@/models/Movie";
 import { User } from "@/models/User";
 import { messages } from "@/utils/message";
 import { NextRequest, NextResponse } from "next/server";

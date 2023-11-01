@@ -1,16 +1,22 @@
+'use client'
 import "./style.css";
+import React, { useState } from 'react';
+
+import { connectMongoDB } from "@/lib/mongodb";
+import { Movie } from "../../models/Movie";
+import saveMovie from "./saveMovie";
+import unsaveMovie from "./unsaveMovie";
 
 interface Props {
-    film: string
-    photo: string
+    title: string
+    poster_path: string
+    release_date: string
+    idUser: string
   }
 
-export default function Card({ film, photo } : Props) {
+export default function Card({ title, poster_path, release_date, idUser } : Props) {
 
-    const cardStyle = {
-        cursor: 'pointer',
-      };
-
+    const [isFavorited, setIsFavorited] = useState(false);
 
     const MAX_TITLE_LENGTH = 20; // Define la longitud máxima del título
 
@@ -21,43 +27,83 @@ export default function Card({ film, photo } : Props) {
     }
     return title;
     };
+
+
+    const toggleFavorite = () => {
+        // setIsFavorited(!isFavorited);
+
+        if (isFavorited) {
+          fetch("/api/movies", {
+            method: "POST",
+            headers: {
+            "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              title: title,
+              poster_path: poster_path,
+              release_date: release_date,
+              idUser: idUser,
+            }),
+          })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Película guardada:", data);
+          })
+          .catch((error) => {
+            console.error("Error al guardar la película:", error);
+          });
+
+
+        // } else if (!isFavorited) {
+
+        //   let idMovie;
+
+        //   fetch(`/api/movies?title=${title}&poster_path=${poster_path}&release_date=${release_date}&idUser=${idUser}`, {
+        //     method: "GET",
+        //     headers: {
+        //     "Content-Type": "application/json",
+        //     },
+        //   })
+        //   .then((response) => response.json())
+        //   .then((data) => {
+        //     console.log("Película encontrada:", data);
+        //     idMovie = data && data.movie ? data.movie._id : null;
+        //   })
+        //   .catch((error) => {
+        //     console.error("Error al encontrar la película:", error);
+        //   });
+
+
+        // fetch("/api/movies?id=ID_DE_LA_PELICULA", {
+        //   method: "DELETE",
+        //   headers: {
+        //     "Content-Type": "application/json",
+        //   },
+        //   })
+        //   .then((response) => response.json())
+        //   .then((data) => {
+        //     console.log("Película eliminada:", data);
+        //   })
+        //   .catch((error) => {
+        //     console.error("Error al eliminar la película:", error);
+        //   });
+
+        }
+      };
     
     // ver foto peli: https://image.tmdb.org/t/p/w200/51tqzRtKMMZEYUpSYkrUE7v9ehm.jpg   // poster_path
     return (
         <div className="card">
-            <img src={`https://image.tmdb.org/t/p/w200${photo}`} alt="Actor 1"/>
+            <button
+                className={`favorite-button ${isFavorited ? 'favorited' : ''}`}
+                onClick={toggleFavorite}
+                >
+                &#9734; {/* Estrella Unicode */}
+            </button>
+            <img src={`https://image.tmdb.org/t/p/w200${poster_path}`} alt="Actor 1"/>
             <div className="card-content">
-                <h2 style={cardStyle}>{truncateTitle(film)}</h2>
+                <h2 style={{cursor: 'pointer'}}>{truncateTitle(title)} <h3>{release_date}</h3></h2>
             </div>
         </div>
     )
 }
-
-{/* const results = data.results;
-const resultsContainer = document.getElementById("results-container"); // CONTENEDOR
-
-// Crear la card para cada actor
-results.forEach(person => {
-const card = document.createElement("div");
-card.classList.add("card");
-
-const profileImage = document.createElement("img");
-profileImage.src = `https://image.tmdb.org/t/p/w200${person.profile_path}`;
-profileImage.alt = person.name;
-
-const cardContent = document.createElement("div");
-cardContent.classList.add("card-content");
-
-const nameElement = document.createElement("h2");
-nameElement.textContent = person.name;
-nameElement.style.cursor = "pointer"; // Agregar cursor de clic
-
-nameElement.addEventListener("click", () => viewPerson(person.id));
-
-cardContent.appendChild(nameElement);
-
-
-card.appendChild(profileImage);
-card.appendChild(cardContent);
-
-resultsContainer.appendChild(card); */}

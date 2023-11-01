@@ -50,7 +50,7 @@ import SearchBar from '@/components/SearchBar';
   export default async function HomePage () {
 
     const cookieStore = cookies()
-    
+    let userId = '';
 
     if (cookieStore) {
       // Los datos del usuario ahora están disponibles en decodedToken y userCookie
@@ -62,7 +62,7 @@ import SearchBar from '@/components/SearchBar';
       const userData = JSON.parse(userDataCookie.value);
 
       // Accede al campo _id del objeto userData
-      const userId = userData._id;
+      userId = userData._id;
 
       console.log('ID del usuario:', userId);
     } else {
@@ -80,13 +80,14 @@ import SearchBar from '@/components/SearchBar';
     // ver foto peli: https://image.tmdb.org/t/p/w200/51tqzRtKMMZEYUpSYkrUE7v9ehm.jpg   // poster_path
     return (
       <main>
-        <SearchBar query={query} />
+        <SearchBar query={query} userId={userId} />
 
         {/* <LikeButton id={post.id}/> film, photo */}
+        <h1>Ultimos lanzamientos:</h1>
 
         <div className='container'>
           {movies?.map((movie: any, index: number) => (
-              <Card film={movie.title} photo={movie.poster_path} key={movie.id} />
+              <Card title={movie.title} poster_path={movie.poster_path} release_date={movie.release_date} idUser={userId} key={movie.id} />
             ))
           }
         </div>
