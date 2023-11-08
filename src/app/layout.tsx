@@ -2,6 +2,7 @@ import { NotificationProvider } from '@/context/NotificationContext'
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import Navbar from '@/components/Navbar'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -32,8 +33,3 @@ export default function RootLayout({ children }: RootLayoutProps) {
     </html>
   )
 }
-
-// min-h-screen -> alto minimo del 100% de la pantalla
-// flex flex-col -> flex y flex direction colum
-// items-center -> items alineados al centro
-// justify-center -> alineados vertical y horizontalmente

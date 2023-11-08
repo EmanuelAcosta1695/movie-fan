@@ -24,7 +24,6 @@ export default function LoginPage() {
     finishLoading()
   }
 
-  // si no se coloca dentro del fragment, no se alinea
   return (
     <>
       <Form title='Login' onSubmit={login}>

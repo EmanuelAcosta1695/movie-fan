@@ -28,7 +28,6 @@ export async function middleware (request: NextRequest) {
   }
 }
 
-// para que haga match con la ruta home
 export const config = {
-  matcher: '/home'
+  matcher: ['/home', '/profile']
 }

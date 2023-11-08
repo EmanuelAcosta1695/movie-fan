@@ -43,10 +43,10 @@ los documentos que se almacenarán en la colección movies.
 */
 const MovieSchema: Schema = new Schema(
     {
-        title: { type: String, required: true,},
-        poster_path: { type: String, required: true, unique: true,},
-        release_date: { type: String, required: true,},
-        idUser: { type: String, required: true, unique: true,},
+        title: { type: String, required: true, unique: true},
+        poster_path: { type: String, required: true, unique: true},
+        release_date: { type: String, required: true},
+        idUser: { type: String, required: true},
     },
     {
         versionKey: false, // para evitar que Mongoose agregue un campo __v (por defecto llamado "versionKey") en los documentos almacenados en la base de datos.
