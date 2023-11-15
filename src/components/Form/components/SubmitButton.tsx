@@ -8,7 +8,7 @@ interface SubmitButtonProps {
 }
 
 export function SubmitButton({buttonText, isLoading}:SubmitButtonProps){
-    // disabled={isLoading} -> es para no poder hacer muchos clicks mientras esta cargando
+
     return (
         <button className={styles.submitButton} type="submit" disabled={isLoading}>
             {isLoading? <Loader /> : buttonText}

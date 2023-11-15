@@ -3,8 +3,7 @@ import { NextResponse } from 'next/server'
 
 export async function middleware (request: NextRequest) {
   try {
-    const token = request.cookies.get('auth_cookie') // esta cookie viene de cuando hacemos login
-
+    const token = request.cookies.get('auth_cookie')
     if (!token) {
       return NextResponse.redirect(new URL('/', request.url))
     }
@@ -28,7 +27,6 @@ export async function middleware (request: NextRequest) {
   }
 }
 
-// para que haga match con la ruta home
 export const config = {
-  matcher: '/home'
+  matcher: ['/home', '/profile']
 }

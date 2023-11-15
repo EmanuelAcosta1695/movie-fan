@@ -6,9 +6,6 @@ interface FooterProps {
   link: string
 }
 
-
-// Se puede colocar debajo del login para agregar texto de por ej 
-//   olvidaste tu contraseña? o Crear cuenta
 export function Footer ({ description, link, textLink }: FooterProps) {
   return (
     <div className='w-full flex justify-center mt-3'>
