@@ -8,8 +8,6 @@ export async function POST(request: NextRequest) {
         
         const postData = await request.json();
 
-        console.log("PostData: ", postData)
-
         await connectMongoDB();
 
         const newMovie: IMovieSchema = new Movie({

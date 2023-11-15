@@ -17,14 +17,13 @@ export default function Card({ title, poster_path, release_date, idUser } : Prop
 
   const MAX_TITLE_LENGTH = 20; // Define la longitud máxima del título
 
-  // Función para truncar el título
+  // Función para comprimir el título
   const truncateTitle = (title: String) => {
   if (title.length > MAX_TITLE_LENGTH) {
       return title.substring(0, MAX_TITLE_LENGTH) + '...';
   }
     return title;
   };
-
 
   const toggleFavorite = () => {
 
@@ -51,9 +50,8 @@ export default function Card({ title, poster_path, release_date, idUser } : Prop
 
   };
   
-  // ver foto peli: https://image.tmdb.org/t/p/w200/51tqzRtKMMZEYUpSYkrUE7v9ehm.jpg   // poster_path
   return (
-    <div className="card">
+    <div className="card dark:bg-gray-800 dark:border-gray-700">
         <button
             className={`favorite-button ${isFavorited ? 'favorited' : ''}`}
             onClick={toggleFavorite}
@@ -65,5 +63,5 @@ export default function Card({ title, poster_path, release_date, idUser } : Prop
             <h2 style={{cursor: 'pointer'}}>{truncateTitle(title)} <h3>{release_date}</h3></h2>
         </div>
     </div>
-)
+  )
 }

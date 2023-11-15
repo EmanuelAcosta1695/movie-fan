@@ -14,7 +14,6 @@ export default function LoginPage() {
   const login = async (formData: any) => {
     startLoading()
 
-    // Procesa la solicitud de log in del user
     await authFetch({
       endpoint: 'login',
       redirectRoute: '/home',
@@ -25,15 +24,15 @@ export default function LoginPage() {
   }
 
   return (
-    <>
+    <div className="flex flex-col items-center justify-center h-screen">
       <Form title='Login' onSubmit={login}>
         <div className="my-[10px] flex flex-col gap-4">
-          <Form.Input label='Correo' name='email' placeholder="Ingresa tu correo..." />
+          <Form.Input label='Email' name='email' placeholder="Ingresa tu correo..." />
           <Form.Input label='Contraseña' name='password' placeholder="Ingresa tu contraseña..." type="password"/>
         </div>
         <Form.SubmitButton buttonText="Iniciar Sesión" isLoading={isLoading} />
         <Form.Footer description="Aun no tenes cuenta?" link="/register" textLink="Registrarse"/>
       </Form>
-    </>
+    </div>
   )
 }

@@ -15,19 +15,15 @@ interface RootLayoutProps {
   children: React.ReactNode
 }
 
-// el main se coloca asi para dar estilos globales
-// se aplica a todas las paginas y componentes hijos que se añaden
-// todos habitan dentro de este main o RootLayout
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
       <body className={inter.className}>
 
-        {/* agregamos el provider de las notifaciones */}
         <NotificationProvider>
-          <main className='min-h-screen flex flex-col items-center justify-center'>
+          <div className='w-full'>
             {children}
-          </main>
+          </div>
         </NotificationProvider>
       </body>
     </html>

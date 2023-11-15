@@ -3,8 +3,7 @@ import { NextResponse } from 'next/server'
 
 export async function middleware (request: NextRequest) {
   try {
-    const token = request.cookies.get('auth_cookie') // esta cookie viene de cuando hacemos login
-
+    const token = request.cookies.get('auth_cookie')
     if (!token) {
       return NextResponse.redirect(new URL('/', request.url))
     }

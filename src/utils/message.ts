@@ -8,7 +8,8 @@ export const messages = {
         userNotFound: 'Usuario no encontrado.',
         incorrectPassword: 'Contraseña incorrecta.',
         notAuthorized: 'Usuario no autorizado.',
-        tokenNotValid: 'Token invalido.'
+        tokenNotValid: 'Token invalido.',
+        passwordNotValid: 'La contraseña debe tener 8 caracteres o más y contener al menos un carácter especial, una letra minúscula y una mayúscula.'
     },
     succes: {
         userCreated: 'Usuario creado correctamente.',

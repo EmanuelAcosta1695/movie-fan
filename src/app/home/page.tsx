@@ -58,17 +58,24 @@ import Navbar from '@/components/Navbar'
 
     const { movies } = await getAllMovies();
 
-    // ver foto peli: https://image.tmdb.org/t/p/w200/51tqzRtKMMZEYUpSYkrUE7v9ehm.jpg   // poster_path
     return (
       <main>
         <Navbar/>
         <SearchBar query={query} userId={userId} />
 
-        <h1>Ultimos lanzamientos:</h1>
-
-        <div className='container'>
+        <div className='mx-auto flex flex-col items-center'>
+          <h1 className="text-3xl text-cyan-500 font-bold mt-6 mb-10">🎬 Ultimos lanzamientos 🎬</h1>
+        </div>
+  
+        <div className='container mx-auto flex flex-col items-center'>
           {movies?.map((movie: any, index: number) => (
-              <Card title={movie.title} poster_path={movie.poster_path} release_date={movie.release_date} idUser={userId} key={movie.id} />
+              <Card 
+                title={movie.title} 
+                poster_path={movie.poster_path} 
+                release_date={movie.release_date} 
+                idUser={userId} 
+                key={movie.id} 
+              />
             ))
           }
         </div>

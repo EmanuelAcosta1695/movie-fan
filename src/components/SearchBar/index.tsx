@@ -18,20 +18,10 @@ export const SearchBar = ({ query, userId }: OnSearchProps) => {
 
 
   const handleSearch = async (search: string) => {
-    // console.log('Búsqueda:', query);
-    // setResults(query);
-
-    // console.log(result);
-    // setResults(result);
-
-
-    // --------------------------------------------------------------
 
     try {
 
       const formattedSearch = search.replace(/ /g, '+');
-
-      console.log(formattedSearch)
 
       const res = await fetch(`https://api.themoviedb.org/3/search/movie?query=${formattedSearch}&api_key=60352d0e1d07a5b5492aa1b0e399801c`);
       
@@ -39,13 +29,10 @@ export const SearchBar = ({ query, userId }: OnSearchProps) => {
         throw new Error('Failed to fetch data');
       }
   
-      const data = await res.json(); // Espera a que la respuesta se convierta en JSON
+      const data = await res.json();
       const movies = data.results;
-  
-      // console.log(movies);
+
       setResults(movies);
-  
-      //return { movies }; // Devuelve un objeto con la propiedad 'movies'
 
     } catch (error) {
       console.error('Error:', error);

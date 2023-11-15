@@ -12,9 +12,7 @@ interface InputProps {
 }
 
 export function Input ({ label, name, placeholder, type }: InputProps) {
-    // Utiliza el useContext al contexto del formulario asi
-    //  no hay que pasarlo de hijo a hijo
-    // ! ->
+
     const { formValues, setFormValues } = useContext(FormContext)!
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -25,7 +23,6 @@ export function Input ({ label, name, placeholder, type }: InputProps) {
         }))
     }
 
-    // formValues[name] -> si name es correo ej -> formValues['correo']
     return (
         <div className={styles.inputContainer}>
         <label className={styles.label} htmlFor={name}>

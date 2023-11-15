@@ -1,4 +1,3 @@
-import React from 'react'
 import {cookies} from "next/headers"
 
 export default function Cookies() {
@@ -7,8 +6,6 @@ export default function Cookies() {
     let userId = '';
 
     if (cookieStore) {
-      
-      console.log('Datos del usuario:', cookieStore.get('user_data'));
 
       const userDataCookie = cookieStore.get('user_data');
 
@@ -17,7 +14,6 @@ export default function Cookies() {
 
       userId = userData._id;
 
-      console.log('ID del usuario:', userId);
     } else {
       console.log('El usuario no ha iniciado sesión');
     }

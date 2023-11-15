@@ -1,6 +1,5 @@
 import mongoose, {Schema, Document, ObjectId} from 'mongoose';
 
-// log in
 export interface IUser {
     _id?: ObjectId | string | undefined
     email: string
@@ -9,15 +8,10 @@ export interface IUser {
     updatedAt?: string
 }
 
-// register
-// Document: implica que esa clase está modelando un documento en una base de datos NoSQL 
-//   como MongoDB utilizando una biblioteca como Mongoose en Node.js
 export interface IUserSchema extends Document {
     _id?: ObjectId | string | undefined
     email: string
     password: string
-
-    // estas dos propiedades se crean automaticamente por el timestamp
     createdAt?: string
     updatedAt?: string
 }
@@ -28,12 +22,11 @@ const UserSchema: Schema = new Schema(
        password: { type: String, required: true,},
     },
     {
-        versionKey: false, // para evitar que Mongoose agregue un campo __v (por defecto llamado "versionKey") en los documentos almacenados en la base de datos.
-        timestamps: true, // en true para habilitar la funcionalidad de marcas de tiempo en el esquema.  Cuando está habilitada, Mongoose automáticamente agrega dos campos a los documentos: createdAt y updatedAt.
+        versionKey: false, 
+        timestamps: true, 
     }
 );
 
-// validacion para crear o si esta creado el modelo
 export const User = mongoose.models.User || mongoose.model('User', UserSchema);
 
 

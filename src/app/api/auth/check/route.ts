@@ -5,19 +5,12 @@ import jwt from "jsonwebtoken";
 import { connectMongoDB } from "@/lib/mongodb";
 import { User } from "@/models/User";
 
-// Se agrega luego en un middleware cuando se crea el front
-//   para validar en la home que el usuario este autenticado.
-//   Y vamos a tener en la cookie un token y justamente este endpoint
-//      verifica que esa cookie funcione correctamente.
-
 export async function GET() {
     try {
         const headerList = headers()
 
-        // obtengo el token
         const token = headerList.get('token')
 
-        // validamos que haya token
         if(!token) {
             return NextResponse.json(
                 { message: messages.error.notAuthorized },
@@ -35,7 +28,6 @@ export async function GET() {
             
             const userFind = await User.findById(data._id);
 
-            // verificamos que exista el usuario
             if(!userFind) {
                 return NextResponse.json(
                     { message: messages.error.userNotFound },

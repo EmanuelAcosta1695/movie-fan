@@ -29,7 +29,6 @@ export async function POST(request: NextRequest) {
 
         const userFind = await User.findOne({ email });
 
-        // validamos que exista el usuario
         if(!userFind){
             return NextResponse.json(
                 { message: messages.error.userNotFound },
@@ -42,7 +41,6 @@ export async function POST(request: NextRequest) {
             userFind.password
         )
 
-        // validamos que la contraseña sea la correcta
         if(!isCorrect) {
             return NextResponse.json(
                 { message: messages.error.incorrectPassword },
@@ -53,9 +51,6 @@ export async function POST(request: NextRequest) {
         // @ts-ignore
         const {password: userPass, ...rest} = userFind._doc;
 
-        // 'secreto' -> palabra clave que se utiliza siempre q se usa jwt
-        // 1er argumento, el payload. en este caso el nuevo user, excepto pass
-        // 3er argumento, un objeto de configuracion
         const token = jwt.sign({ data: rest }, 'secreto', {
             expiresIn: 86400, // 1 dia
         });
@@ -69,8 +64,6 @@ export async function POST(request: NextRequest) {
         }
     );
 
-    // Le setiamos cookies para cuando estemos en el home, ya las tengamos 
-    //  setiadas y tengamos validadas nuestras rutas
     response.cookies.set('auth_cookie', token, {
         secure: process.env.NODE_ENV === 'production',
         sameSite: 'strict',
@@ -89,7 +82,7 @@ export async function POST(request: NextRequest) {
 
     } catch (error) {
         return NextResponse.json(
-            { messages: messages.error.default, error }, // le envio el error en el catch
+            { messages: messages.error.default, error },
             { status: 500 }
         )
     }

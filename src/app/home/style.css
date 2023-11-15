@@ -1,50 +1,15 @@
-/* body {
-    margin: 0;
-    display: flex;
-    justify-content: center;  
-    align-items: center;
-} */
-
-/* background-color: rgb(249, 249, 249); */
-/* background: linear-gradient(to bottom right, rgb(255, 183, 48), rgb(255, 196, 88)); */
-
-/* h1 {
-    display: flex;
-    justify-content: center;
-    background-color: #E88B20;
-    border: 1px solid black;
-    color: black;
-    padding: 10px;
-    font: oblique bold 120% cursive;
-    font-size: 35px;
-} */
-
-
-/* Estilos para el contenedor */
-/* 
-.container {
-    margin-top: 5%;
-    display: grid;
-    grid-template-columns: 25% 25% 25% 25% 25%;
-    align-items: center;
-} */
-
-
 body {
     margin: 0;
     margin-top: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* Asegura que el cuerpo de la página tenga al menos la altura del viewport. */
-    /* background: linear-gradient(to bottom right, rgb(255, 183, 48), rgb(255, 196, 88)); */
+    min-height: 100vh;
   }
   
-  /* Estilos para el contenedor */
   .container {
-    /* Puedes eliminar el margen superior si no lo necesitas. */
     margin-top: 1%;
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* Esto crea 5 columnas iguales. */
+    grid-template-columns: repeat(5, 1fr);
     align-items: center;
   }

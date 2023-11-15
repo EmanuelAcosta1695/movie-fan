@@ -1,8 +1,9 @@
 "use client";
 import Link from "next/link";
 import { FaUserCircle, FaSignOutAlt } from "react-icons/fa";
-import { NextRequest, NextResponse } from "next/server";
 import { useRouter } from 'next/navigation';
+import Image from "next/image";
+import logoMovie from "../../assets/logo/movieLove.png";
 
 
 function Navbar() {
@@ -24,6 +25,18 @@ function Navbar() {
         className="border-b bg-white shadow-sm font-inter"
       >
         <div className="mx-auto flex h-16 max-w-screen-2xl items-center justify-between sm:px-6 lg:px-8">
+          <div className="flex items-center gap-4">
+              <Link href="/home">
+                <Image
+                  className="max-h-12 duration-300 hover:scale-125 w-auto"
+                  src={logoMovie}
+                  alt="Logo de la empresa"
+                  width={50}
+                  height={50}
+                />
+              </Link>
+            </div>
+
           <div className="flex flex-1 items-center justify-end gap-8 mr-10">
             <nav
               aria-label="Site Nav"
